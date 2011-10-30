@@ -4,6 +4,7 @@ Donate link: http://www.2wconsulting.com/products-2/free-plugins/web2lead-sugarc
 Tags: comments, spam
 Requires at least: 3.2.1
 Tested up to: 3.2.1
+Stable tag: trunk
 
 Web2Lead enables SugarCRM lead record generation from a Wordpress-based website.
 
