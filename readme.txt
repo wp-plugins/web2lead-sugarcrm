@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: crmtech
 Donate link: http://www.2wconsulting.com/products-2/free-plugins/web2lead-sugarcrm-free/
-Tags: comments, spam
+Tags: sugarcrm, leads, lead capture, crm
 Requires at least: 3.2.1
 Tested up to: 3.2.1
 Stable tag: trunk
