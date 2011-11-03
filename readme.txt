@@ -12,12 +12,16 @@ Web2Lead enables SugarCRM lead record generation from a Wordpress-based website.
 
 Web2Lead enables SugarCRM lead record generation from a Wordpress-based website. This version contains a basic contact form and creates a SugarCRM lead record assigned to a specified user.
 
-This plugin was developed on Worpress v3.2.1, SugarCRM CE v6.2.4 and PHP v5.3.8. 
-PHP 5.2.6 or later is required due to the internal PHP SOAP libraries used.
+This plugin was developed on Worpress v3.2.1, SugarCRM CE v6.2.4 and PHP v5.3.8. PHP 5.2.6 or later is required due to the internal PHP SOAP libraries used.
+
+It has been tested against the following stacks:
+*	Wordpress 3.2.1 and SugarCRM CE 6.2.4 on IIS 7 running PHP 5.3.8 (Windows 7)
+*	Wordpress 3.2.1 and SugarCRM CE 6.2.4 on Apache running PHP 5.3.3-7+squeeze3 (Debian GNU/Linux 6.0)
+
 
 == Installation ==
 
-Installation is simple - just go to Plugins > Add New. Then upload the zip file. Wordpress takes care of the rest.
+Installation is simple - just go to Plugins > Add New. Then upload the zip file. Wordpress takes care of the rest. Remember to activate it!
 
 
 == Frequently Asked Questions ==
@@ -32,5 +36,5 @@ I've developed and tested against Worpress v3.2.1 and SugarCRM Community Edition
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 * Original version
