@@ -32,7 +32,12 @@ The url of the SugarCRM SOAP service is usually the root of the SugarCRM url wit
 
 = Which version(s) of Worpress, SugarCRM and/or PHP is this compatible with? =
 
-I've developed and tested against Worpress v3.2.1 and SugarCRM Community Edition v6.2.4 running on PHP v5.3.8. As I get time, I will verify against earlier versions of Worpress and SugarCRM.
+It should work with almost any recent version of Wordpress and SugarCRM. The earliest version of SugarCRM tested is 5.5. 
+
+It has been tested against the following stacks:
+* Wordpress 3.2.1 and SugarCRM CE 6.2.4 on IIS 7 running PHP 5.3.8 (Windows 7)
+* Wordpress 3.2.1 and SugarCRM CE 6.2.4 on Apache running PHP 5.3.3-7+squeeze3 (Debian GNU/Linux 6.0)
+* Wordpress 3.2.1 and SugarCRM CE 5.5.0 on Linux.
 
 == Changelog ==
 
