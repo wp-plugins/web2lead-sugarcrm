@@ -4,9 +4,11 @@
 	if($submit == 1) {
 		//	import lead
 		include('sugarlead.php');
-?>
-<p>Thank you for your interest!</p>
-<?php
+		
+		$sugar = new SugarLead();
+		if($sugar->CreateLead()) {
+			echo '<p>Thank you for your interest!</p>';
+		}
 	}
 	else {
 ?>
