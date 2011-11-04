@@ -3,7 +3,7 @@
 	$submit = $_POST["web2lead-submit"];
 	if($submit == 1) {
 		//	import lead
-		include('sugarlead.php');
+		require_once('sugarlead.php');
 		
 		$sugar = new SugarLead();
 		if($sugar->CreateLead()) {
