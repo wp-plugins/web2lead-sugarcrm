@@ -26,3 +26,9 @@
 	</div>
 </form>
 <p>Lastly, to expose the contact form on your Wordpress site, simply create a page and place the following shortcode on the page: [web2lead]</p>
+<hr />
+<h2>Test it out!</h2>
+<p>Use the form below to test the Web2Lead plugin:</p>
+<?php
+	include('web2lead-form.php');
+?>
