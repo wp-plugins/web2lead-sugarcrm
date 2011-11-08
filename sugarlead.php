@@ -17,7 +17,7 @@ class SugarLead {
 		$this->url = get_option('web2lead_sugarcrm_url');
 		$this->user = get_option('web2lead_sugarcrm_user');
 		$this->pwd = get_option('web2lead_sugarcrm_pwd');
-		$this->notify_email = get_option("admin_email");	
+		$this->notify_email = get_option("web2lead_notify_email");	
 		$this->app = 'web2lead';
 		$this->soap_client = new SoapClient(null, array(
 				'location'=>$this->url,
@@ -26,7 +26,7 @@ class SugarLead {
 				'trace'=>1,
 				'exceptions'=>1
 				));
-		$this->send_email = true;
+		$this->send_email = get_option("web2lead_enable_notify_email");
 	}
 
 	//	log into SugarCRM
@@ -63,30 +63,18 @@ class SugarLead {
 	public function CreateLead() {
 		try{
 			if($this->Login()) {
-				//	get form data
-				$name = $_POST["txtName"];
-				$company = $_POST["txtCompany"];
-				$phone = $_POST["txtPhone"];
-				$email = $_POST["txtEmail"];
-				$comments = $_POST["txtComments"];
-				//	try to parse name field into first name and last name (everything before the first space = first name. all other = last name).
-				$sp = stripos($name, ' ');
-				$first_name = substr($name,0,$sp);
-				$last_name = substr($name, $sp+1,strlen($name));
-				
-				//	create data array
-				$data = array(
-					array('name'=>'first_name','value'=>$first_name),
-					array('name'=>'last_name','value'=>$last_name),
-					array('name'=>'status', 'value'=>'New'),
-					array('name'=>'phone_work', 'value'=> $phone),
-					array('name'=>'email1', 'value'=>$email),
-					array('name'=>'account_name','value'=>$company),
-					array('name'=>'lead_source','value'=>'Web Site'),
-					array('name'=>'description','value'=>$comments),
-					array('name'=>'assigned_user_id', 'value'=>$this->user_id)
-				);
-				
+				//	get our mappings & create data array
+				$mappings = unserialize(get_option("web2lead_mappings"));
+				$data = array();
+				foreach($mappings as $mapping) {
+					$val = $mapping['value'];
+					if($mapping['type']=="field") {
+						//	grab value from the form post
+						$val = $_POST[$mapping['value']];
+					}
+					$data[] = array('name'=>$mapping['target'],'value'=>$val);
+				}
+
 				//	execute the create
 				$result = $this->SetEntry('Leads',$data);
 				
@@ -103,13 +91,15 @@ class SugarLead {
 					$mail->Subject = "New Web Lead";
 					
 					$body = "A new lead record was created in SugarCRM:\r\n\r\n";
-					$body .= "First Name: $first_name\r\n";
-					$body .= "Last Name: $last_name\r\n";
-					$body .= "Company: $company\r\n";
-					$body .= "Email: $email\r\n";
-					$body .= "Phone: $phone\r\n";
-					$body .= "Comments: $comments\r\n";
-					
+					$fields = unserialize(get_option("web2lead_form_fields"));
+					foreach ($fields as $field) {
+						//	each feld is stored as an array
+						$field_name = $field["id"];
+						$field_display = $field["display"];
+						//	grab value from the form post
+						$val = $_POST[$field_name];
+						$body .= $field_display.": ".$val."\r\n";
+					}			
 					$mail->Body = $body;
 
 					if(!$mail->Send())

@@ -4,7 +4,7 @@ Donate link: http://www.2wconsulting.com/products-2/free-plugins/web2lead-sugarc
 Tags: sugarcrm, leads, lead capture, crm
 Requires at least: 3.2.1
 Tested up to: 3.2.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 
 Web2Lead enables SugarCRM lead record generation from a Wordpress-based website.
 
@@ -48,3 +48,6 @@ It has been tested against the following stacks:
 * Added test form on the main plugin option page.
 * Transformed sugarlead.php script into a structured class object with exception handling.
 * Added notification email to Worpress admin when form is submitted.
+
+= 1.0.2 =
+* Default contact form fields and mappings into SugarCRM are stored as arrays in Wordpress options.

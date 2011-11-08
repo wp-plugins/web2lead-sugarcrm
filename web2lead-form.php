@@ -14,26 +14,26 @@
 ?>
 <form method="post">
 	<table class="form-table">
-		<tr>
-			<th scope="row">Name</th>
-			<td><input type="text" id="txtName" name="txtName" size="60" value="" /></td>
-		</tr>
-		<tr>
-			<th scope="row">Company</th>
-			<td><input type="text" id="txtCompany" name="txtCompany" size="60"/></td>
-		</tr>
-		<tr>
-			<th scope="row">Phone</th>
-			<td><input type="text" id="txtPhone" name="txtPhone" size="60"/></td>
-		</tr>
-		<tr>
-			<th scope="row">Email</th>
-			<td><input type="text" id="txtEmail" name="txtEmail" size="60"/></td>
-		</tr>
-		<tr>
-			<th scope="row">Comments</th>
-			<td><textarea id="txtComments" name="txtComments"></textarea></td>
-		</tr>
+		<?php
+			//	get our fields
+			$fields = unserialize(get_option("web2lead_form_fields"));
+			foreach ($fields as $field) {
+				//	each feld is stored as an array
+				$field_name = $field["id"];
+				$field_type = $field["type"];
+				$field_display = $field["display"];
+				$field_size = $field["size"];
+				
+				echo "<tr><th>".$field_display."</th><td>";
+				if($field_type=="textbox") {
+					echo "<input type='$field_type' id='$field_name' name='$field_name' size='$field_size' />";
+				}
+				elseif($field_type == "textarea") {
+					echo "<textarea id='$field_name' name='$field_name' cols='$field_size'></textarea>";
+				}
+				echo "</td></tr>";
+			}
+		?>
 	</table>
 	<input type="hidden" name="web2lead-submit" value="1" />
 	<div style="text-align:center;">
