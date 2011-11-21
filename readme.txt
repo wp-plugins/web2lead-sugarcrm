@@ -4,7 +4,7 @@ Donate link: http://www.2wconsulting.com/products-2/free-plugins/web2lead-sugarc
 Tags: sugarcrm, leads, lead capture, crm
 Requires at least: 3.2.1
 Tested up to: 3.2.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 Web2Lead enables SugarCRM lead record generation from a Wordpress-based website.
 
@@ -15,9 +15,9 @@ Web2Lead enables SugarCRM lead record generation from a Wordpress-based website.
 This plugin was developed on Worpress v3.2.1, SugarCRM CE v6.2.4 and PHP v5.3.8. PHP 5.2.6 or later is required due to the internal PHP SOAP libraries used.
 
 It has been tested against the following stacks:
-* Wordpress 3.2.1 and SugarCRM CE 6.2.4 on IIS 7 running PHP 5.3.8 (Windows 7)
-* Wordpress 3.2.1 and SugarCRM CE 6.2.4 on Apache running PHP 5.3.3-7+squeeze3 (Debian GNU/Linux 6.0)
-* Wordpress 3.2.1 and SugarCRM CE 5.5.0 on Linux.
+Wordpress 3.2.1 and SugarCRM CE 6.2.4 on IIS 7 running PHP 5.3.8 (Windows 7)
+Wordpress 3.2.1 and SugarCRM CE 6.2.4 on Apache running PHP 5.3.3-7+squeeze3 (Debian GNU/Linux 6.0)
+Wordpress 3.2.1 and SugarCRM CE 5.5.0 on Linux.
 
 == Installation ==
 
@@ -35,9 +35,19 @@ The url of the SugarCRM SOAP service is usually the root of the SugarCRM url wit
 It should work with almost any recent version of Wordpress and SugarCRM. The earliest version of SugarCRM tested is 5.5. 
 
 It has been tested against the following stacks:
-* Wordpress 3.2.1 and SugarCRM CE 6.2.4 on IIS 7 running PHP 5.3.8 (Windows 7)
-* Wordpress 3.2.1 and SugarCRM CE 6.2.4 on Apache running PHP 5.3.3-7+squeeze3 (Debian GNU/Linux 6.0)
-* Wordpress 3.2.1 and SugarCRM CE 5.5.0 on Linux.
+Wordpress 3.2.1 and SugarCRM CE 6.2.4 on IIS 7 running PHP 5.3.8 (Windows 7)
+Wordpress 3.2.1 and SugarCRM CE 6.2.4 on Apache running PHP 5.3.3-7+squeeze3 (Debian GNU/Linux 6.0)
+Wordpress 3.2.1 and SugarCRM CE 5.5.0 on Linux.
+
+= Which fields are on the form? =
+
+Currently, the standard fields are First Name, Last Name, Company, Phone, Email and Comments.
+
+= Where are the fields stored in SugarCRM? =
+
+On the lead record that is created, the fields are mapped as follows: First Name => first_name, Last Name => last_name, Company => account_name, Phone => phone_work, Email => email1, Comments => description.
+
+Additionally, the following values are also set on the lead record: Status = "New", Lead Source = "Web Site".
 
 == Changelog ==
 
@@ -51,3 +61,8 @@ It has been tested against the following stacks:
 
 = 1.0.2 =
 * Default contact form fields and mappings into SugarCRM are stored as arrays in Wordpress options.
+
+= 1.0.3 =
+* Required field support (First Name, Last Name and Email are required). If any required fields are missing, the form is re-displayed with a message indicating which fields are missing (entered values are retained).
+* Minor form markup updates.
+* Added a little more error checking during SugarCRM login function.

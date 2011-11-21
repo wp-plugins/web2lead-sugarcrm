@@ -39,13 +39,18 @@ class SugarLead {
 				);
 			$login = $this->soap_client->login($user_auth,$this->app);
 			$this->session_id = $login->id;
+			
+			//	check for error
+			if($this->session_id == -1) {
+				throw new Exception("Please check user name and password.");
+			}
 
 			//	get user id
 			$this->user_id = $this->soap_client->get_user_id($session_id);
 			return true;
 		}
 		catch(Exception $e) {
-			throw new Exception('Error logging into SugarCRM');
+			throw new Exception('Error logging into SugarCRM: '.$e->getMessage());
 		}
 	}
 	
