@@ -49,6 +49,12 @@ On the lead record that is created, the fields are mapped as follows: First Name
 
 Additionally, the following values are also set on the lead record: Status = "New", Lead Source = "Web Site".
 
+= How can I change/add fields to the form? =
+
+You'll have to know a little bit about PHP and Wordpress Plugin programming to do it, but it's pretty easy: Fields and their mappings are stored as arrays within 2 WordPress options (1 for fields, 1 for the mappings).
+
+If you do not wish to learn all that, I have a [Pro version](http://www.2wconsulting.com/products-2/premium-plugins/web2lead-sugarcrm-pro/) of the plugin which includes a nice interface to managing form fields and how they map into SugarCRM.
+
 == Changelog ==
 
 = 1.0.0 =
