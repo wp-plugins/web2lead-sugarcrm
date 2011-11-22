@@ -3,7 +3,7 @@
 Plugin Name: Web2Lead Sugar CRM
 Plugin URI: http://www.2wconsulting.com
 Description: Plugin to collect leads from a Wordpress contact form and save into Sugar CRM lead records. Developed using WordPress 3.2.1, SugarCRM CE 6.2.4 and PHP 5.3.8. If you like this version but need additional configuration options, see my website for Web2Lead SugarCRM Pro.
-Version: 1.0.3
+Version: 1.0.4
 Author: Will Wilson
 Author URI: http://www.2wconsulting.com
 License: GPL2
@@ -28,7 +28,7 @@ License: GPL2
 			array( "id"=> "txtLastName", "type"=>"textbox", "display"=> "Last Name", "size"=> 60, "required"=> 1),
 			array( "id"=> "txtCompany", "type"=>"textbox", "display"=> "Company", "size"=> 60),
 			array( "id"=> "txtPhone", "type"=>"textbox", "display"=> "Phone", "size"=> 60),
-			array( "id"=> "txtEmail", "type"=>"textbox", "display"=> "Email", "size"=> 60, "required"=> 1),
+			array( "id"=> "txtEmail", "type"=>"textbox", "display"=> "Email", "size"=> 60, "required"=> 1, "validate_email"=>1),
 			array( "id"=> "txtComments", "type"=>"textarea", "display"=> "Comments", "size"=> 60)
 		);
 		add_option("web2lead_form_fields",serialize($fields));
@@ -79,6 +79,7 @@ License: GPL2
 	function web2lead_display() {
 		//	display contact form
 		include('web2lead-form.php');
+		return BuildForm();
 	}
 	add_shortcode('web2lead', 'web2lead_display');
 ?>

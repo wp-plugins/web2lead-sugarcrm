@@ -34,4 +34,5 @@
 <p>Use the form below to test the Web2Lead plugin:</p>
 <?php
 	include('web2lead-form.php');
+	echo BuildForm();
 ?>
