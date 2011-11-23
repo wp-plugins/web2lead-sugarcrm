@@ -2,9 +2,11 @@
 
 function BuildForm() {
 	$html = "<h2>Contact Us</h2>";
+	$nospam = $_POST["nospam"];
 	$submit = $_POST["web2lead-submit"];
 	$is_error = false;
-	if($submit == 1) {
+	
+	if($nospam == null && $submit == 1) {
 		//	check for required fields
 		$fields = unserialize(get_option("web2lead_form_fields"));
 
@@ -43,7 +45,7 @@ function BuildForm() {
 			}
 		}
 	}
-	if($submit != 1 || ($submit == 1 && $is_error == true)) {
+	if($nospam || $submit != 1 || ($submit == 1 && $is_error == true)) {
 		$html .= "<form method=\"post\">
 	<table class=\"form-table\">";
 			//	get our fields
@@ -67,6 +69,7 @@ function BuildForm() {
 				$html .= "</td></tr>";
 			}
 		$html .="</table>
+	<input type=\"hidden\" name=\"nospam\" />
 	<input type=\"hidden\" name=\"web2lead-submit\" value=\"1\" />
 	<div style=\"text-align:center;\">
 		<p class=\"submit\">
